@@ -1,0 +1,275 @@
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #00BFFF;
+    --pencil-color: #DC3545;
+    --radical-axis-color: #28A745;
+    --background-color: #f8f9fa;
+    --control-bg-color: #ffffff;
+    --text-color: #343a40;
+    --light-text-color: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll on mobile */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.controls {
+    width: 380px;
+    padding: 25px 30px;
+    background-color: var(--control-bg-color);
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 1.8em;
+    color: var(--text-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    margin-bottom: 25px;
+}
+
+.control-group {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: #fdfdfd;
+}
+
+.control-group > label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-container span {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+}
+input[type="range"]:hover {
+    opacity: 1;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.1);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.value-display {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.1em;
+    margin-bottom: 0;
+    color: var(--text-color);
+}
+
+#k-value {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    user-select: none;
+    margin-bottom: 15px;
+}
+.toggle-switch:last-child { margin-bottom: 0; }
+.toggle-switch input { display: none; }
+.switch-label { font-weight: normal; margin-left: 50px; }
+.switch-slider {
+    position: absolute;
+    top: 0; left: 0;
+    height: 24px; width: 44px;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: .4s;
+}
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+input:checked + .switch-label + .switch-slider { background-color: var(--primary-color); }
+input:checked + .switch-label + .switch-slider:before { transform: translateX(20px); }
+
+/* --- Collapsible section styles --- */
+.collapsible-section {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-top: 25px;
+    background-color: #fdfdfd;
+    overflow: hidden;
+}
+.collapsible-section summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+.collapsible-section summary::-webkit-details-marker {
+    display: none;
+}
+.collapsible-section h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.collapsible-section summary::after {
+    content: '▲';
+    font-size: 0.8em;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    color: var(--light-text-color);
+    transform-origin: center;
+}
+.collapsible-section:not([open]) > summary::after {
+    transform: rotate(180deg);
+}
+.collapsible-section ul {
+    list-style: none;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+.collapsible-section li { display: flex; align-items: center; margin-bottom: 8px; }
+.collapsible-section li:last-child { margin-bottom: 0; }
+/* --- End of collapsible styles --- */
+
+.legend-color {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.legend-line {
+    display: inline-block;
+    width: 16px; height: 3px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background-image: linear-gradient(90deg, var(--radical-axis-color) 60%, transparent 60%);
+    background-size: 6px 3px;
+}
+
+.canvas-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-width: 0;
+}
+
+canvas {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: grab;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+canvas:active { cursor: grabbing; }
+
+@media (max-width: 900px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .controls {
+        width: 100%;
+        box-shadow: none;
+        border-bottom: 1px solid var(--border-color);
+        box-sizing: border-box;
+        flex-shrink: 0;
+        max-height: 60vh; /* コントロール部分が高くなりすぎないように制限 */
+    }
+    .canvas-container {
+        padding: 15px;
+        flex-grow: 1;
+        min-height: 30vh; /* Canvas領域の最小高さを確保 */
+    }
+}

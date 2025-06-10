@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>円の束とラジカル軸のシミュレーション</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="controls">
+            <h1>円の束とラジカル軸</h1>
+            <p>2つの青い円 (C1, C2) をドラッグして、位置や半径を自由に変更できます。下のスライダーを動かして、円の束の様子を観察しましょう。</p>
+
+            <div class="control-group">
+                <label for="k-slider">円の束のパラメータ k</label>
+                <div class="slider-container">
+                    <span>-2.0</span>
+                    <input type="range" id="k-slider" min="-2" max="3" step="0.01" value="0.5">
+                    <span>3.0</span>
+                </div>
+                <p class="value-display">k = <span id="k-value">0.50</span></p>
+            </div>
+
+            <div class="control-group">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="radical-axis-toggle" checked>
+                    <span class="switch-label">ラジカル軸を表示</span>
+                    <span class="switch-slider"></span>
+                </label>
+                 <label class="toggle-switch">
+                    <input type="checkbox" id="base-circles-toggle" checked>
+                    <span class="switch-label">基底円 (C1, C2) を表示</span>
+                    <span class="switch-slider"></span>
+                </label>
+            </div>
+
+            <details class="collapsible-section" id="info-details">
+                <summary><h3>操作方法</h3></summary>
+                <ul>
+                    <li><b>円の中心をドラッグ:</b> 円を移動します。</li>
+                    <li><b>円周上をドラッグ:</b> 円の半径を変更します。</li>
+                </ul>
+            </details>
+
+            <details class="collapsible-section" id="legend-details">
+                <summary><h3>凡例</h3></summary>
+                <ul>
+                    <li><span class="legend-color" style="background-color: #007BFF;"></span> C1: 基底となる円1</li>
+                    <li><span class="legend-color" style="background-color: #00BFFF;"></span> C2: 基底となる円2</li>
+                    <li><span class="legend-color" style="background-color: #DC3545;"></span> 円の束 (C(k))</li>
+                    <li><span class="legend-line" style="background-color: #28A745;"></span> ラジカル軸 (根軸)</li>
+                </ul>
+            </details>
+
+        </aside>
+        
+        <main class="canvas-container">
+            <canvas id="simulationCanvas"></canvas>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
