@@ -255,6 +255,9 @@ canvas:active { cursor: grabbing; }
         min-height: 100vh;
         overflow-y: auto;
     }
+    p {
+        margin-bottom: 20px;
+    }
     .container {
         flex-direction: column;
         height: auto;
@@ -265,6 +268,12 @@ canvas:active { cursor: grabbing; }
         border-bottom: 1px solid var(--border-color);
         box-sizing: border-box;
         flex-shrink: 0;
+    }
+    .control-group {
+        margin-bottom: 20px;
+    }
+    .collapsible-section {
+        margin-top: 20px;
     }
     .canvas-container {
         padding: 15px;
