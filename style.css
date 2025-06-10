@@ -265,11 +265,10 @@ canvas:active { cursor: grabbing; }
         border-bottom: 1px solid var(--border-color);
         box-sizing: border-box;
         flex-shrink: 0;
-        max-height: 60vh; /* コントロール部分が高くなりすぎないように制限 */
     }
     .canvas-container {
         padding: 15px;
         flex-grow: 1;
-        min-height: 30vh; /* Canvas領域の最小高さを確保 */
+        min-height: 40vh; /* Canvas領域の最小高さを確保 */
     }
 }
